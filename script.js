@@ -192,3 +192,13 @@ deleteIcon.addEventListener("click", function () {
   itemsCount = 0;
   navAfter.classList.remove("show");
 });
+
+mainImg.addEventListener("click", function () {
+  cartBox.classList.remove("show");
+});
+
+for (const i of thumbnailbImg) {
+  i.addEventListener("click", function () {
+    cartBox.classList.remove("show");
+  });
+}
