@@ -148,6 +148,7 @@ const emptyCart = document.querySelector(".empty-cart");
 const filledCart = document.querySelector(".cart-bottom");
 const sectionContainer = document.querySelector(".container");
 
+const btnLeft = document.querySelector(".btn-left");
 const btnRight = document.querySelector(".btn-right");
 const numbercart = document.querySelector(".count-items");
 const currPrice = document.querySelector(".current-price");
@@ -158,11 +159,6 @@ let itemsCount = 0;
 
 navCart.addEventListener("click", function () {
   cartBox.classList.toggle("show");
-  if (itemsCount > 0) {
-    emptyCart.classList.remove("show");
-    filledCart.classList.add("show");
-    currPrice.textContent = `$${itemsCount * 125}.00`;
-  }
 });
 
 document.addEventListener("keydown", function (e) {
@@ -193,12 +189,18 @@ deleteIcon.addEventListener("click", function () {
   navAfter.classList.remove("show");
 });
 
-mainImg.addEventListener("click", function () {
+document.body.addEventListener("click", function (e) {
+  const arr = e.path;
+  for (let i = 0; i < arr.length; i++) {
+    if (
+      btnRight === arr[i] ||
+      btnLeft === arr[i] ||
+      navCart === arr[i] ||
+      cartBox === arr[i]
+    ) {
+      return;
+    }
+  }
+
   cartBox.classList.remove("show");
 });
-
-for (const i of thumbnailbImg) {
-  i.addEventListener("click", function () {
-    cartBox.classList.remove("show");
-  });
-}
