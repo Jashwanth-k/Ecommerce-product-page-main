@@ -1,4 +1,5 @@
 // Main image
+const sectionHero = document.querySelector(".hero");
 const mainImg = document.querySelector(".main-img");
 // Float image
 const classFloat = document.querySelector(".floating-img");
@@ -190,6 +191,10 @@ deleteIcon.addEventListener("click", function () {
 });
 
 document.body.addEventListener("click", function (e) {
+  if (!cartBox.classList.contains("show")) {
+    return;
+  }
+
   const arr = e.path;
   for (let i = 0; i < arr.length; i++) {
     if (
